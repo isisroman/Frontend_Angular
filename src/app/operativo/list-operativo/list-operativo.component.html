@@ -1,0 +1,37 @@
+<div class="col">
+  <h2>Operativos</h2>
+  <button class="btn btn-primary" (click)="add_operativo()">Nuevo Operativo</button>&nbsp;&nbsp;&nbsp;
+  <button class="btn btn-primary" (click)="list_cargo()">Cargos</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="hidden">Id</th>
+        <th>Nro.</th> 
+        <th>Nombre</th>
+        <th>C.I.</th>
+        <th>Fecha Nac.</th>
+        <th>Cargo</th>
+        <th>Estado</th>
+      </tr>
+    </thead> 
+    <tbody>
+        <tr *ngFor="let operativo of listoperativos;let indice=index">
+        <td class="hidden">{{ operativo.id }}</td>
+        <td>{{indice+1}}</td>
+        <td>{{operativo.openombre}}</td>
+        <td>{{operativo.opeci}}</td>
+        <td>{{operativo.opefechanac | date:'yyyy-MM-dd' }}</td>
+        <td>{{operativo.carnombre}}</td>
+        <td>{{operativo.opeestado == '0' ? '-' : 'HABILITADO'}}</td>
+        <td>
+          <button class="btn btn-success" (click)="editar_operativo(operativo)">
+            Editar
+          </button>
+          <button class="btn btn-danger" (click)="eliminar_operativo(operativo)">
+            Borrar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

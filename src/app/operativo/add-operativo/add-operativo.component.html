@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-10">
+      <h2>Registrar Operativo</h2>
+      <form [formGroup]="validarForm" (ngSubmit)="onSubmit()">
+          <div class="form-group col-md-8">
+              <label for="idcargo">Cargo:</label>
+              <select formControlName= "idcargo" class="form-control" (change)= "selectChangeCargo($event)">
+                  <option value="" selected>--Elegir opcion--</option>
+                  <option *ngFor="let cargo of listcargos" [ngValue]="cargo.id">
+                      {{ cargo.carnombre }}
+                    </option>
+              </select>
+              <!-- <p><span>Cargo seleccionado: </span><b>{{selectCargo}}</b></p> -->
+            </div>
+        <div class="form-group col-md-8">
+          <label for="openombre">Nombre:</label>
+          <input autocomplete="off" formControlName="openombre" placeholder="Nombre Completo" name="openombre" class="form-control" id="openombre" required>
+        </div>
+        <div class="form-group col-md-8">
+          <label for="opeci">C.I.:</label>
+          <input autocomplete="off" formControlName="opeci" placeholder="1456932 SC" name="opeci" class="form-control" id="opeci" required>
+        </div>
+        <div class="form-group col-md-8">
+          <label for="opefechanac">Fecha Nac.:</label>
+         <input  formControlName="opefechanac"  class="form-control" autocomplete="off"  type="date" (ngModelChange)="dt = $event" required>         
+        </div>
+    
+        <div class="form-group col-md-8">
+            <div class="">
+                <button class="btn btn-success">Guardar</button> &nbsp;&nbsp;&nbsp;
+                <button class="btn btn-primary" (click)="volver_listado_operativo()">Regresar</button>
+            </div>
+        </div>
+      </form>
+    </div>
+</div>

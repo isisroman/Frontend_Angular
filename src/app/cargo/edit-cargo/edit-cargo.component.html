@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-10">
+      <h2 class="text-center">Editar Cargo</h2>
+      <form [formGroup]="editarForm" (ngSubmit)="onSubmit()">
+        <div class="form-group col-md-8">
+          <label for="carnombre">Cargo:</label>
+          <input formControlName="carnombre" placeholder="Cargo" name="carnombre" class="form-control" id="carnombre" required>
+        </div>
+        <div class="form-group col-md-8">
+            <label>Estado:</label>
+            <div *ngIf="carestado==1; else inactivo">
+                <select formControlName="carestado" class="form-control" id="carestado">
+                    <option value="1" selected>Habilitado</option>
+                    <option value="0">Inactivo</option>
+                </select>
+            </div>
+            <ng-template #inactivo>
+                <select formControlName="carestado" class="form-control" id="carestado">
+                    <option value="1">Habilitado</option>
+                    <option value="0"selected>Inactivo</option>
+                </select>
+            </ng-template>
+          </div>
+        <div class="form-group col-md-8">
+            <div class="">
+                <button class="btn btn-success">Aceptar</button> &nbsp;&nbsp;&nbsp;
+                <button class="btn btn-primary" (click)="volver_listado_cargo()">Regresar</button>
+            </div>
+        </div>
+      </form>
+    </div>
+</div>
